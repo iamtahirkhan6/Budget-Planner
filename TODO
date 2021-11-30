@@ -1,0 +1,13 @@
+List TODO:
+UI/Menu Navigation
+Month (Array of structures with Expenses and Income)
+Expense (Structure)
+Income (Structure)
+Linked Lists of Structures
+  Add
+  Delete
+  Sort
+  Search
+  List (Show All)
+Read/write from file
+  Data format
