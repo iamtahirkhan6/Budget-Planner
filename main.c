@@ -1,13 +1,16 @@
-/*
- * C program for budget planner
- * The planner maintains details such as income, expenses.
- * 
- */
-
 #include <stdio.h>
-#include <conio.h>
+#include <string.h>
 
-void main()
+#include "BudgetPlanner.h"
+
+//TODO ExitApplication() //Exports to budget and exits application
+
+int main(void)
 {
-    /* TODO */
+   //TODO Add read from budget.txt
+
+
+   //MainMenu();
+
+   return 0;
 }
