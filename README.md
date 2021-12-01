@@ -1,5 +1,7 @@
 # Budget Planner
 
+![Budget Planner](https://i.imgur.com/fdvOB8x.jpg?1)
+
 1) Allow you to enter individual values in a monetary currency of your choice.
 2) Save the entries in a suitable structure array with variable amount of
 entries.
