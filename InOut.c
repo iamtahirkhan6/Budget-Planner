@@ -6,55 +6,33 @@
 #include "InOut.h"
 #include "Month.h"
 
-struct inOut
-{
-   char *source;
-   bool isExpense;
-   float value;
-   struct inOut *next;
-};
-
+char* currentMonth;
 bool currentType;
-
-void ModifyInOutSource()
-{
-    printf("You have selected modify src!\n");
-    //Update the current InOut src
-    InOutMenu(currentType);
-}
-
-void ModifyInOutType()
-{
-    printf("You have selected modify type(income/expense)!\n");
-    //Update the current InOut type
-    InOutMenu(currentType);
-}
+char* sampleSource = "Rent"; 
 
 void ModifyInOutAmount()
 {
    printf("You have selected modify amt!\n");
    //Update the current InOut amount
-   InOutMenu(currentType);
+   InOutMenu(currentMonth, sampleSource, currentType);
 }
 
 void DeleteInOut()
 {
    printf("You have selected to delete this Income!\n");
-   InOutMenu(currentType);
+   InOutMenu(currentMonth, sampleSource, currentType);
 }
 
 void GoBackToMonth()
 {
-    MonthMenu();
+    MonthMenu(currentMonth);
 }
 
 void DisplayInOutMenu(bool inOutType)
 { 
-    currentType = inOutType;
-
     printf("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ \n");
     printf("===================================================== \n");
-    printf(" \t\tMonth whatever \t \n ");
+    printf(" \t\t%s \t \n", currentMonth);
     if(inOutType)
         printf(" \t\tIncome \t \n");
     else
@@ -62,19 +40,21 @@ void DisplayInOutMenu(bool inOutType)
     printf(" Source\n");
     printf(" Amount\n");
     printf("===================================================== \n");
-    printf(" 1.Modify Source\n");
-    printf(" 2.Modify Amount\n");
+    printf(" 1.Modify Amount\n");
     if(inOutType)
-        printf(" 3.Delete Expense \n");
+        printf(" 2.Delete Expense \n");
     else
-        printf(" 3.Delete Expense \n");
-    printf(" 4.Back to month \n");
-    printf(" 5.Exit Program \n");
+        printf(" 2.Delete Expense \n");
+    printf(" 3.Back to month \n");
+    printf(" 4.Exit Program \n");
 }
 
-void InOutMenu(bool inOutType) //to add month as argument
+void InOutMenu(char* monthName, char* source, bool inOutType) //to add month as argument
 {
-   DisplayInOutMenu(inOutType);
+   currentType = inOutType;
+   currentMonth = monthName;
+
+   DisplayInOutMenu(currentType);
 
    int yourChoice;
 
@@ -85,12 +65,11 @@ void InOutMenu(bool inOutType) //to add month as argument
 
       switch (yourChoice)
       {
-         case 1: ModifyInOutSource(); break;
-         case 2: ModifyInOutAmount();break;
-         case 3: DeleteInOut(); break;
-         case 4: GoBackToMonth(); break;
-         case 5: exit(0); break;
+         case 1: ModifyInOutAmount();break;
+         case 2: DeleteInOut(); break;
+         case 3: GoBackToMonth(); break;
+         case 4: exit(0); break;
          default: printf("Invalid \n"); break;
       }
-   } while (!(yourChoice>0 && yourChoice<6));
+   } while (!(yourChoice>0 && yourChoice<5));
 }

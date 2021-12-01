@@ -7,10 +7,7 @@
 
 int main(void)
 {
-   //TODO Add read from budget.txt
-
-
-   //MainMenu();
+   MainMenu();
 
    return 0;
 }

@@ -5,6 +5,27 @@
 #include "BudgetPlanner.h"
 #include "Month.h"
 
+char *months[5] = {"JAN", "FEB", "MAR", "APR", "MAY"};
+float balance[5] = {23.45, 231.45, 234.45, 33.45, 33.45};
+
+void PrintMonthList(char **monthName, float* balance)
+{
+   for (int i = 0; i<sizeof(monthName)/sizeof(monthName[0]); ++i)
+   {
+      printf("\t%s \tBalance: \t%f\n", monthName[i], balance[i]);
+      printf("===================================================== \n");
+   }
+}
+
+void GoToMonth()
+{
+   char monthToView[10];
+   printf("What month do you want to view? (Input name): ");
+   scanf("%s",monthToView);
+
+   MonthMenu(monthToView);
+}
+
 void DisplayMainMenu()
 {
    printf("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ \n");
@@ -12,15 +33,8 @@ void DisplayMainMenu()
    printf(" \tWelcome to the Budget Planner\t \n ");
    printf(" \t\tTeam 1\t \n ");
    printf("===================================================== \n");
-   printf("\tMonth 1 \tBalance: \tAmount\n");
-   printf("===================================================== \n");
-   printf("\tMonth 2 \tBalance: \tAmount\n");
-   printf("===================================================== \n");
    
-   /*TODO for each month, print remaining and Amount
-      printf("\tMONTHNAME \tBalance: \tBALANCE\n");
-      printf("===================================================== \n");
-   */
+   PrintMonthList(months, balance);
    
    printf("\tTotal balance: \tAmount\n"); //The sum of all months' balances
    printf("===================================================== \n");
@@ -42,7 +56,7 @@ void MainMenu()
 
       switch (yourChoice)
       {
-         case 1: MonthMenu(); break;
+         case 1: GoToMonth(); break;
          case 2: exit(0); break;
          default: printf("Invalid \n"); break;
       }

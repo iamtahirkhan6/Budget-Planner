@@ -9,8 +9,8 @@ void OpenExpense(void);
 
 void OpenIncome(void);
 
-void DisplayMonthMenu(void);
+void DisplayMonthMenu(char*);
 
-void MonthMenu(void);
+void MonthMenu(char*);
 
 #endif

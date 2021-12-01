@@ -3,35 +3,100 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-struct inOut
+/*struct inOut
 {
-   char *in_out;
    char *type;
+   char *source;
    float value;
 
-};
+};*/
 
-struct budget
+struct inOut
 {
-   char *month;
-   struct inOut in;
-   float balance;
-   struct budget *next;
+   char *name;
+   char *type;
+   char *source;
+   float value;
+   //float balance;
+   struct inOut *next;
 };
+struct inOut *head = NULL;
+struct inOut *current = NULL;
+
+struct balance
+{
+  char *mname;
+  float balance;
+  
+};
+void summary()
+{
+    //int number_of_keys = 12;
+    int x,i;
+    struct balance bc[12];
+    //struct balance *bc= malloc(sizeof(struct balance) * number_of_keys);
+    
+    //bc[0].mname = "January";bc[1].mname = "Feb";bc[0].mname = "Jan";bc[1].mname = "Feb";
+    bc[0].mname = "january";
+    bc[1].mname = "february";
+    bc[2].mname = "march";
+    bc[3].mname = "april";
+    bc[4].mname = "may";
+    bc[5].mname = "june";
+    bc[6].mname = "july";
+    bc[7].mname = "august";
+    bc[8].mname = "september";
+    bc[9].mname = "october";
+    bc[10].mname = "november";
+    bc[11].mname = "december";
+    for (x = 0; x < 12; x++)
+    {
+        bc[x].balance = 0;
+    }
+    struct inOut *ptr = head;
+    printf("\n[ ");
+    for (i = 0; i < 12; i++)
+    {
+        struct inOut *ptr = head;
+        while (ptr != NULL)
+        {
+          //printf("\n %s,%s,%.2f,%s,%s",ptr->name, bc[i].mname,ptr->value,ptr->type,ptr->source);
+          //printf("\n%.2f",(strcmp(ptr->name,bc[i].mname)));
+          if((strcmp(ptr->name,bc[i].mname)==0)){
+                if ((strcmp(ptr->type,"income") == 0))
+                {
+                    bc[i].balance = bc[i].balance + ptr->value;
+                }
+                else
+                {
+                    bc[i].balance = bc[i].balance - ptr->value;
+                }
+              // printf("(%s,%.2f) ", bc[i].mname, bc[i].balance);
+            }ptr = ptr->next;
+        //printf("%s,%.2f", bc[i].mname, bc[i].balance);
+        //printf("\n");
+        
+        } 
+        
+    }
+    for(i=0;i<12;i++){
+           printf("%s,%.2f", bc[i].mname, bc[i].balance);
+           printf("\n");
+
+        }
+}
 
 
-struct budget *head = NULL;
-struct budget *current = NULL;
 
 void printList()
 {
-   struct budget *ptr = head;
+   struct inOut *ptr = head;
    printf("\n[ ");
 
    //start from the beginning
    while (ptr != NULL)
    {
-      printf("(%s,%s,%s,%f) ", ptr->month, ptr->in.in_out, ptr->in.type, ptr->in.value);
+      printf("(%s,%s,%s,%.2f) ", ptr->name, ptr->type, ptr->source, ptr->value);
       printf("\n");
       ptr = ptr->next;
    }
@@ -40,25 +105,34 @@ void printList()
 }
 
 //insert link at the first location
-void insert(char *month, char *in_out, char *type, float value)
+void insert(char *name, char *type, char *source, float value)
 {
    
-   struct budget *link = (struct budget *)malloc(sizeof(struct budget));
-   //struct inOut *money = (struct inOut *)malloc(sizeof(struct inOut));
-   //struct inOut money;
-    
-   link->month = malloc(strlen(month) + 1);
-   strcpy(link->month, month);
-   printf("%s",link->month);
-
-   link->in.in_out = in_out;
-   printf("%s",link->in.in_out);
-   //strcpy(link->in->in_out, in_out);
+   struct inOut *link = (struct inOut *)malloc(sizeof(struct inOut));
    
-   link->in.type = type;
+    
+   link->name = malloc(strlen(name) + 1);
+   strcpy(link->name, name);
+   //printf("%s",link->name);
+
+   link->type = malloc(strlen(type) + 1);
+   strcpy(link->type, type);
+   //printf("%s",link->type);
+
+   //link->type = type;
+   //printf("%s",link->type);
    //strcpy(link->in->type, type);
 
-   link->in.value = value;
+   
+   link->source = malloc(strlen(source) + 1);
+   strcpy(link->source, source);
+   //printf("%s",link->source);
+
+   //link->source = source;
+  // printf("%s",link->source);
+
+   link->value = value;
+   printf("%.2f",link->value);
    
    //point it to old first node
 
@@ -68,13 +142,13 @@ void insert(char *month, char *in_out, char *type, float value)
    head = link;  
 }
 
-void delete (char *month, char *in_out, char *type)
+void delete (char *name, char *type, char *source)
 {
 
    //start from the first link
-   struct budget *current = head;
-   struct budget *previous = NULL;
-   //struct budget* temp;
+   struct inOut *current = head;
+   struct inOut *previous = NULL;
+   //struct inOut* temp;
 
    //if list is empty
    if (head == NULL)
@@ -82,7 +156,7 @@ void delete (char *month, char *in_out, char *type)
       printf("Head is null");
    }
 
-   while (strcmp(current->month, month) || strcmp(current->in.in_out, in_out) || strcmp(current->in.type, type))
+   while (strcmp(current->name, name) || strcmp(current->type, type) || strcmp(current->source, source))
    {
 
       //if it is last node
@@ -113,13 +187,13 @@ void delete (char *month, char *in_out, char *type)
 
    //return current;
 }
-void update(char *month, char *in_out, char *type, float value)
+void update(char *name, char *type, char *source, float value)
 {
 
    //start from the first link
-   struct budget *current = head;
-   struct budget *previous = NULL;
-   //struct budget* temp;
+   struct inOut *current = head;
+   struct inOut *previous = NULL;
+   //struct inOut* temp;
 
    //if list is empty
    if (head == NULL)
@@ -127,7 +201,7 @@ void update(char *month, char *in_out, char *type, float value)
       printf("Head is null");
    }
 
-   while ((strcmp(current->month,month)||strcmp(current->in.in_out,in_out)||strcmp(current->in.type,type))){
+   while ((strcmp(current->name,name)||strcmp(current->type,type)||strcmp(current->source,source))){
      
       if(current->next == NULL) {
          printf("next is null \n");
@@ -142,8 +216,8 @@ void update(char *month, char *in_out, char *type, float value)
    
    }
    
-   current->in.value=value;
-   //printf("\n %f,\t %f",current->in.value ,value);
+   current->value=value;
+   //printf("\n %.2f,\t %.2f",current->value ,value);
 
 
 }  
@@ -156,68 +230,70 @@ void main()
 {
       FILE *fp;
       char action[10];
-      char month[10];
-      char in_out[10];
+      char name[10];
       char type[10];
+      char source[10];
       int value;
       char check = 'y';
       char buff[10];
 
       fp = fopen("C://Users//Ruthra//Desktop//budget.txt", "r");
       char test[10];
-      while (1)
+      while (!feof(fp))
       {
 
          fscanf(fp, "%s", action);
          printf("\n\n%s ", action);
-         fscanf(fp, "%s", month);
-         printf("%s ", month);
-         fscanf(fp, "%s", in_out);
-         printf("%s ", in_out);
+         fscanf(fp, "%s", name);
+         printf("%s ", name);
          fscanf(fp, "%s", type);
          printf("%s ", type);
+         fscanf(fp, "%s", source);
+         printf("%s ", source);
          fscanf(fp, "%s", buff);
          value = atoi(buff);
-         printf("%d \n", value);
-         if (feof(fp))
-            break;
+         printf("%.2f \n", value);
+         //if (feof(fp))
+           // break;
          //fscanf(fp, "%s", test);
          if (strcmp(action, "ADD") == 0)
          {
-            insert(month, in_out, type, value);
-            printf("\n entry added ");
+            insert(name, type, source, value);
+            printf("\n%s,%s,%s,%.2f",name, type, source, value);
          }
          else if (strcmp(action, "DEL") == 0)
          {
 
-            //struct budget *temp =
-            delete (month, in_out, type);
+            //struct inOut *temp =
+            delete (name, type, source);
             printf("\n entry Deleted :");
-            //printf("(%s,%s,%s,%f) ",temp->month,temp->in_out,temp->type,temp->value);
-            //"(%s,%s,%s,%f) ",temp->month,temp->in_out,temp->type,temp->value
+            //printf("(%s,%s,%s,%.2f) ",temp->name,temp->type,temp->source,temp->value);
+            //"(%s,%s,%s,%.2f) ",temp->name,temp->type,temp->source,temp->value
             //printf("Deletion code comes here\n");
          }
          else
          {
-            update(month, in_out, type, value);
+            update(name, type, source, value);
             printf("\n Entry updated :");
             //printf("Action code comes here\n");
          }
-
+          
          //switch(action){
          //  case "ADD":
-         //    insertFirst(month,in_out,type,value);
+         //    insertFirst(name,type,source,value);
          //    break;
          //default :
          //    break;}
 
-         //while(fscanf(fp, "%d", &test) == 1);
+         //while(fscanf(fp, "%.2f", &test) == 1);
          //while(fgetc(fp) != EOF);
       }
 
-      printf("Total list: ");
+      summary();
+      //printf("Total list: ");
 
       //print list
+      
       printList();
       fclose(fp);
    
