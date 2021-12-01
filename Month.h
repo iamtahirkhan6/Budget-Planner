@@ -9,8 +9,6 @@ void OpenExpense(void);
 
 void OpenIncome(void);
 
-void GoBack(void);
-
 void DisplayMonthMenu(void);
 
 void MonthMenu(void);
