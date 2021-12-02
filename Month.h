@@ -1,15 +1,15 @@
 #ifndef MONTH
 #define MONTH
 /* ^^ these are inclusion guard */
-void AddExpense(void);
+void AddInOutDisplay(void);
 
-void AddIncome(void);
+void ModifyInOutAmount();
 
-void OpenExpense(void);
+void DeleteInOut();
 
-void OpenIncome(void);
+void OpenInOutDisplay(void);
 
-void DisplayMonthMenu(char*);
+void GoBackToBudgetPlanner(void);
 
 void MonthMenu(char*);
 

@@ -1,7 +1,7 @@
 #ifndef BUDGETPLANNER
 #define BUDGETPLANNER
 
-void PrintMonthList(char**, float*);
+void PrintMonthList();
 void GoToMonth();
 void MainMenu(void);
 
