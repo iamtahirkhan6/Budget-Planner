@@ -152,23 +152,40 @@ void DisplayMonthMenu(char* monthName)
 void MonthMenu(char* monthName)
 {
    currentMonth = monthName;
-   DisplayMonthMenu(currentMonth);
+   if (currentMonth == "january" || currentMonth == "february" || currentMonth == "march" || currentMonth == "april" || currentMonth == "may" || currentMonth == "june" || currentMonth == "july" || currentMonth == "august" || currentMonth == "september" || currentMonth == "october" || currentMonth == "november" || currentMonth == "december")
+   {
+      DisplayMonthMenu(currentMonth);
 
-   int yourChoice;
+      int yourChoice;
 
-   do
-   { 
-      printf("Enter your choice(1-5): ");
-      scanf("%d",&yourChoice);
-
-      switch (yourChoice)
+      do
       {
-         case 1: AddInOutDisplay(); break;
-         case 2: ModifyInOutAmount(); break;
-         case 3: DeleteInOut(); break;
-         case 4: GoBackToBudgetPlanner(); break;
-         case 5: ExitProgram(); break;
-         default: printf("Invalid \n"); break;
-      }
-   } while (!(yourChoice>0 && yourChoice<6));
+         printf("Enter your choice(1-5): ");
+         scanf("%d", &yourChoice);
+
+         switch (yourChoice)
+         {
+         case 1:
+            AddInOutDisplay();
+            break;
+         case 2:
+            ModifyInOutAmount();
+            break;
+         case 3:
+            DeleteInOut();
+            break;
+         case 4:
+            GoBackToBudgetPlanner();
+            break;
+         case 5:
+            ExitProgram();
+            break;
+         default:
+            printf("Invalid \n");
+            break;
+         }
+      } while (!(yourChoice > 0 && yourChoice < 6));
+   } else {
+      printf("Month does not exist! Please check the spelling of your input.\n");
+   }
 }
