@@ -14,4 +14,7 @@ displays the budget planner.
 
 ## Compilation
 
-Compile with: gcc main.c Month.c Utilities.c BudgetPlanner.c -o BudgetPlanner
+Compile with: 
+```
+gcc main.c Month.c Utilities.c BudgetPlanner.c -o BudgetPlanner
+```
