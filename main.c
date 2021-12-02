@@ -3,6 +3,11 @@
     @file main.c
     @author Alejandro García, Ruthra Bellen, Smruthi Ravichandran, Tahir Uddin Khan
     @version 1.0 2/12/21 
+    
+   <copyright file="«BudgetPlanner»" company="«SRH»">
+      Author: Alejandro García, Ruthra Bellen, Smruthi Ravichandran, Tahir Uddin Khan
+      Copyright (c). All rights reserved.
+   </copyright>
 */
 #include <stdio.h>
 #include <string.h>

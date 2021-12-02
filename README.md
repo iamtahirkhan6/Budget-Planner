@@ -12,5 +12,6 @@ displays the budget planner.
 - Implement add, delete, sort, search and list functions in your code.
 - Write and read your data in and from a file with the name "budget.txt".
 
-## Screenshots
-![Main Menu](https://user-images.githubusercontent.com/48375147/144385651-4f1323d4-29cd-4d36-9f70-6a3d7bf0c5cb.png)
+## Compilation
+
+Compile with: gcc main.c Month.c Utilities.c BudgetPlanner.c -o BudgetPlanner
