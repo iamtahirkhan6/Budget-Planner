@@ -1,3 +1,9 @@
+/*
+    BudgetPlanner: main screen of the program, it handles the month list and its actions
+    @file BudgetPlanner.c
+    @author Alejandro García
+    @version 1.0 2/12/21 
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,11 +12,13 @@
 #include "Month.h"
 #include "Utilities.h"
 
+//Prints the month list in the program
 void PrintMonthList()
 {
    summaryPrint();
 }
 
+//Navigates to the month view, specified by the user
 void GoToMonth()
 {
    char monthToView[10];
@@ -22,6 +30,7 @@ void GoToMonth()
    MonthMenu(monthToView);
 }
 
+//Displays the information of the Month List
 void DisplayMainMenu()
 {
    printf("\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ \n");
@@ -36,6 +45,7 @@ void DisplayMainMenu()
    printf("2.Exit\n");
 }
 
+//Handles the actions of the Month list
 void MainMenu()
 {
    DisplayMainMenu();

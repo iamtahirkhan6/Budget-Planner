@@ -1,3 +1,9 @@
+/*
+    main: main of this program, where the reading and initializing happen
+    @file main.c
+    @author Alejandro García, Ruthra Bellen, Smruthi Ravichandran, Tahir Uddin Khan
+    @version 1.0 2/12/21 
+*/
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -6,6 +12,7 @@
 #include "BudgetPlanner.h"
 #include "Utilities.h"
 
+//Reads the file budget.txt and inserts into our program
 void ReadFile()
 {
    FILE *fp;

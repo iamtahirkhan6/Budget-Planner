@@ -9,5 +9,6 @@ void delete (char*, char*, char*);
 void update(char*, char*, char*, float);
 void monthList(char*);
 bool checking(char *, char *, char *);
+//void WriteFile();
 void ExitProgram();
 #endif

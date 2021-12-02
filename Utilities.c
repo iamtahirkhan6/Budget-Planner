@@ -1,3 +1,9 @@
+/*
+    Utilities: This file contains all the functions used to handle the structure and its management
+    @file Utilities.c
+    @author Ruthra Bellen
+    @version 1.0 2/12/21 
+*/
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -24,6 +30,7 @@ struct balance
   float balance;
 };
 
+//Updates the information stored in the program
 void summary()
 {
    int x,i;
@@ -66,6 +73,7 @@ void summary()
    }
 }
 
+//Updates the information stored in the program, and prints it out
 void summaryPrint()
 {
    int x,i;
@@ -119,7 +127,7 @@ void summaryPrint()
    printf("===================================================== \n");
 }
 
-//insert link at the first location
+//Insert entry at the first location
 void insert(char *name, char *type, char *source, float value)
 {
    struct inOut *link = (struct inOut *)malloc(sizeof(struct inOut));
@@ -141,6 +149,7 @@ void insert(char *name, char *type, char *source, float value)
    head = link; 
 }
 
+//Removes an entry given the month, type, and source
 void delete (char *name, char *type, char *source)
 {
    struct inOut *current = head;
@@ -174,6 +183,7 @@ void delete (char *name, char *type, char *source)
    }
 }
 
+//Updates  an entry given the month, type, and source
 void update(char *name, char *type, char *source, float value)
 {
    struct inOut *current = head;
@@ -196,6 +206,7 @@ void update(char *name, char *type, char *source, float value)
    current->value=value;
 }
 
+//Prints the information for a month
 void monthList(char *key)
 {
    float balance = 0;
@@ -235,6 +246,7 @@ void monthList(char *key)
    printf("\tBalance: %.2f\n",balance);
 }
 
+//Checks if an entry is currently in our program
 bool checking(char *name, char *type, char *source)
 {
    bool check=false;
@@ -254,7 +266,7 @@ bool checking(char *name, char *type, char *source)
    return check;     
 }
 
-/* 
+/*
 void WriteFile()
 {
    while (!feof(fp))

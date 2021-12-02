@@ -1,3 +1,10 @@
+/*
+    month: handles the (single) month screen, showing entries (incomes/expenses)
+      and handling actions
+    @file Month.c
+    @author Alejandro García
+    @version 1.0 2/12/21 
+*/
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -9,6 +16,7 @@
 
 char* currentMonth;
 
+//Handles the action Add Entry
 void AddInOutDisplay()
 {
    bool inOutType=0;
@@ -49,6 +57,7 @@ void AddInOutDisplay()
    MonthMenu(currentMonth);
 }
 
+//Handles the action Delete Entry
 void DeleteInOut()
 {
    bool inOutType=0;
@@ -79,6 +88,7 @@ void DeleteInOut()
    MonthMenu(currentMonth);
 }
 
+//Handles the action Modify Entry
 void ModifyInOutAmount()
 {
    bool inOutType=0;
@@ -113,11 +123,13 @@ void ModifyInOutAmount()
    MonthMenu(currentMonth);
 }
 
+//Handles menu navigation
 void GoBackToBudgetPlanner()
 {
    MainMenu();
 }
 
+//Handles display of the month information
 void DisplayMonthMenu(char* monthName)
 {
    summary();
@@ -136,6 +148,7 @@ void DisplayMonthMenu(char* monthName)
    printf(" 5.Exit Program \n");
 }
 
+//Handles the actions of the month view
 void MonthMenu(char* monthName)
 {
    currentMonth = monthName;
