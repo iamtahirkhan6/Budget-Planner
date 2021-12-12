@@ -4,6 +4,7 @@ using namespace std;
 class Entry
 
 {
+    // Variables
     public:
         int source;
         int amount;
