@@ -37,7 +37,7 @@ void DisplayMainMenu()
 void action_in_menu()
 {
     int actionName;
-    cout << "Select the action by entering the number: "
+    cout << "Select the action by entering the number: ";
     cout << "[1] Insertion" << "\n" << "[2] Modification" << "\n" << "[3] Deletion";
     cin >> actionName;
 
@@ -60,5 +60,5 @@ void action_in_menu()
         cout << "Error, enter valid actionName.";
     }
     return;
-    
+
 }
