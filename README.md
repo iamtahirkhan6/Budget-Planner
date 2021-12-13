@@ -11,10 +11,3 @@ entries.
 displays the budget planner.
 - Implement add, delete, sort, search and list functions in your code.
 - Write and read your data in and from a file with the name "budget.txt".
-
-## Compilation for C program
-
-Compile with: 
-```
-gcc main.c Month.c Utilities.c BudgetPlanner.c -o BudgetPlanner
-```
