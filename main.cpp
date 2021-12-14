@@ -6,28 +6,29 @@
 
 using namespace std;
 
-int main () {
+int main () 
+{
   //Tests Month:
   //initialize a month and add some data
-  Month testMonth("January");
+  Month testMonth(1);
 
   testMonth.PrintMonth();
   
   //Use all the functions
   cout << "Add entries: " << endl;
-  testMonth.AddEntry("rent", 33.4f);
-  testMonth.AddEntry("car", 43.4f);
-  testMonth.AddEntry("shop", 53.4f);
+  testMonth.AddEntry("Rent", 33.4f);
+  testMonth.AddEntry("Car", 43.4f);
+  testMonth.AddEntry("Shop", 53.4f);
 
   testMonth.PrintMonth();
   
   cout << "Delete entry: " << endl;
-  testMonth.DeleteEntry("rent");
+  testMonth.DeleteEntry("Rent");
 
   testMonth.PrintMonth();
   
   cout << "Modify entry: " << endl;
-  testMonth.ModifyEntry("car", 200.3f);
+  testMonth.ModifyEntry("Car", 200.3f);
 
   testMonth.PrintMonth();
 

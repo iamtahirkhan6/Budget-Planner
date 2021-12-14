@@ -1,27 +1,27 @@
-#include <iostream>
-#include <string>
 #include "Entry.hpp"
 
-class Entry
+// Variables
+string source;
+float amount;
+
+Entry::Entry(string entryName, float nAmount)
 {
-    // Variables
-public:
-    int source;
-    int amount;
+    cout << "Empty Constructor";
+}
 
-    float GetAmount()
-    {
-    }
+float Entry::GetAmount()
+{
 
-    string GetSource()
-    {
-    }
+}
 
-    double BudgetImpact()
-    {
-    }
+string Entry::GetSource()
+{
+}
 
-    void ModifyAmount()
-    {
-    }
-};
+double Entry::BudgetImpact()
+{
+}
+
+void Entry::ModifyAmount()
+{
+}

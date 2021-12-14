@@ -1,8 +1,9 @@
 #include "Month.hpp"
 
-Month::Month(string nameMonth)
+Month::Month(int monthNumber)
 {
-  name = nameMonth;
+  const char *months[12] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+  name = months[monthNumber - 1];
   balance = 0;
 }
 
@@ -11,6 +12,7 @@ Month::~Month()
   entries.clear();
 }
 
+// Update Monthly Balance
 void Month::UpdateMonthlyBalance()
 {
   float newBalance = 0;
@@ -23,22 +25,25 @@ void Month::UpdateMonthlyBalance()
   balance = newBalance;
 }
 
+// Retrieve Monthly Balance
 float Month::GetMonthlyBalance () {
   UpdateMonthlyBalance();
   return balance;
 }
 
+// Add an Entry to month
 void Month::AddEntry(string newEntryName, float newEntryBudget)
 {
   Entry newEntry = Entry(newEntryName, newEntryBudget);
   entries.push_back(newEntry);
 }
 
+// Modify an Entry to month
 void Month::ModifyEntry(string entryToModify, float newAmount)
 {
   for(decltype(entries.size()) i=0; i<entries.size(); i++)
   {
-    if(entries.at(i).source==entryToModify)
+    if(entries.at(i).source == entryToModify)
     {
       //TODO->Call the modify amount function in Entry instead of direct assign
       entries.at(i).amount = newAmount; 
@@ -47,6 +52,7 @@ void Month::ModifyEntry(string entryToModify, float newAmount)
   }
 }
 
+// Delete an Entry from month
 void Month::DeleteEntry(string entryToDelete)
 {
   for(decltype(entries.size()) i=0; i<entries.size(); i++)
@@ -59,6 +65,7 @@ void Month::DeleteEntry(string entryToDelete)
   }
 }
 
+// Sort Entries
 //TODO
 void Month::SortEntries()
 {
