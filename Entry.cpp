@@ -1,27 +1,14 @@
+#include <iostream>
+#include <string>
+
 #include "Entry.hpp"
 
-// Variables
-string source;
-float amount;
+using namespace std;
 
-Entry::Entry(string entryName, float nAmount)
+float Entry::BudgetImpact()
 {
-    cout << "Empty Constructor";
-}
-
-float Entry::GetAmount()
-{
-
-}
-
-string Entry::GetSource()
-{
-}
-
-double Entry::BudgetImpact()
-{
-}
-
-void Entry::ModifyAmount()
-{
+	if (isExpense)
+		return -amount;
+	else
+		return amount;
 }
